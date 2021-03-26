@@ -19,14 +19,13 @@ import Foundation
 
 extension Item{
   var itemDiffableId:String{
-    return title
+    return "\(title)+anotherMemberPerhaps"
   }
 }
 
+let exampleItem = Item(title: "Hoiajsdfojiasd")
 var cellInfo:[String:Item] = [
-  "Boohosoi":Item(title: "Boohosoi"),
-  "Hoiajsdfojiasd":Item(title: "Hoiajsdfojiasd"),
-  "oaijdfoijsafoiasdjf":Item(title: "oaijdfoijsafoiasdjf"),
+  exampleItem.itemDiffableId:exampleItem
 ]
 
 class DiffableDataViewController: UITableViewController {
@@ -43,7 +42,7 @@ class DiffableDataViewController: UITableViewController {
   func update(with list: [Item], animate: Bool = true) {
     var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
     snapshot.appendSections([0])
-    snapshot.appendItems(list.map{item in item.title})
+    snapshot.appendItems(list.map{item in item.itemDiffableId})
     dataSource.apply(snapshot, animatingDifferences: animate)
   }
 
@@ -52,27 +51,25 @@ class DiffableDataViewController: UITableViewController {
     let newItem = Item(title:"added \(Date())")
     print("Adding \(newItem.title)")
 
-    let incomingDataFromServerOrUiChanges = [newItem,Item(title: "Hoiajsdfojiasd")]
+    let incomingDataFromServerOrUiChanges = [
+      newItem,
+      Item(title: "Hoiajsdfojiasd"),
+      Item(title: "Other Item")
+    ]
 
+    //updates the external data structure, you could just use
+        //an array too, depending on the type/amount of data
+        //downloaded vs displayed sparseness
     cellInfo = [:]
     for item in incomingDataFromServerOrUiChanges {
-      cellInfo[item.title] = item
+      cellInfo[item.itemDiffableId] = item
     }
     
-    self.update(with:[newItem,Item(title: "Hoiajsdfojiasd")], animate:true)
+    self.update(with:incomingDataFromServerOrUiChanges, animate:true)
 
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
       self.simulateUpdate()
     }
-  }
-
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    1
-  }
-
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("cellInfo(\(cellInfo.count))")
-    return cellInfo.count
   }
 }
 
@@ -87,6 +84,9 @@ private extension DiffableDataViewController {
           for: indexPath
         )
 
+        //Notice the use of an identifer to index into an external data structure
+        //  This is the key way to avoid issues with
+        //  "my item is already hashable, but not the right way".
         let item = cellInfo[itemId]!
         print("fetching \(item.title)")
         cell.textLabel?.text = item.title
