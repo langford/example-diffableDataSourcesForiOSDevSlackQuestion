@@ -15,6 +15,7 @@
 		89A81B78260E4D2B00997645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89A81B76260E4D2B00997645 /* LaunchScreen.storyboard */; };
 		89A81B83260E4D2B00997645 /* DiffDataExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A81B82260E4D2B00997645 /* DiffDataExTests.swift */; };
 		89A81B8E260E4D2B00997645 /* DiffDataExUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A81B8D260E4D2B00997645 /* DiffDataExUITests.swift */; };
+		89A81B9F260E4D9200997645 /* DiffableDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A81B9E260E4D9200997645 /* DiffableDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		89A81B89260E4D2B00997645 /* DiffDataExUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiffDataExUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89A81B8D260E4D2B00997645 /* DiffDataExUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffDataExUITests.swift; sourceTree = "<group>"; };
 		89A81B8F260E4D2B00997645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89A81B9E260E4D9200997645 /* DiffableDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				89A81B6D260E4D2800997645 /* SceneDelegate.swift */,
 				89A81B6F260E4D2800997645 /* ViewController.swift */,
 				89A81B71260E4D2800997645 /* Main.storyboard */,
+				89A81B9E260E4D9200997645 /* DiffableDataViewController.swift */,
 				89A81B74260E4D2B00997645 /* Assets.xcassets */,
 				89A81B76260E4D2B00997645 /* LaunchScreen.storyboard */,
 				89A81B79260E4D2B00997645 /* Info.plist */,
@@ -260,6 +263,7 @@
 			files = (
 				89A81B70260E4D2800997645 /* ViewController.swift in Sources */,
 				89A81B6C260E4D2800997645 /* AppDelegate.swift in Sources */,
+				89A81B9F260E4D9200997645 /* DiffableDataViewController.swift in Sources */,
 				89A81B6E260E4D2800997645 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
